@@ -1,33 +1,33 @@
 import React, { useState } from "react";
-import logo from "./assets/ekosharr.png";
-import './App.css';
+import { Link } from "react-router-dom";
+import logo from "../assets/ekosharr.png";
+import "./pp.css";
 
-function App() {
+function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
 
   const handleLinkClick = () => {
-    setMenuOpen(false); // Close mobile menu on link click
+    setMenuOpen(false);
   };
 
   return (
-    <div className="app">
-      {/* Navbar */}
-      <nav className="bg-white shadow-md px-4 py-3 flex items-center justify-between">
+    <nav className="bg-white shadow-md px-6 py-4">
+      <div className="flex items-center justify-between max-w-7xl mx-auto">
         {/* Left: Logo + Brand */}
-        <div className="flex items-center">
-          <img src={logo} alt="Eko Sharr Logo" className="h-10 mr-3" />
+        <Link to="/" className="flex items-center space-x-2">
+          <img src={logo} alt="Eko Sharr Logo" className="h-10" />
           <span className="text-green-800 font-bold text-xl">Eko Sharr</span>
-        </div>
+        </Link>
 
-        {/* Center: Menu (visible on md+) */}
+        {/* Desktop Menu */}
         <ul className="hidden md:flex space-x-8 font-medium text-gray-700">
-          <li><a href="#home" className="hover:text-green-700">Home</a></li>
-          <li><a href="#about" className="hover:text-green-700">About</a></li>
-          <li><a href="#products" className="hover:text-green-700">Products</a></li>
-          <li><a href="#contact" className="hover:text-green-700">Contact</a></li>
+          <li><Link to="/" className="hover:text-green-700">Home</Link></li>
+          <li><Link to="/about" className="hover:text-green-700">About</Link></li>
+          <li><Link to="/products" className="hover:text-green-700">Products</Link></li>
+          <li><Link to="/contact" className="hover:text-green-700">Contact</Link></li>
         </ul>
 
-        {/* Right: Search input (visible on md+) */}
+        {/* Search bar */}
         <div className="hidden md:flex">
           <input
             type="text"
@@ -56,15 +56,15 @@ function App() {
             )}
           </svg>
         </button>
-      </nav>
+      </div>
 
-      {/* Mobile Menu (visible when menuOpen is true) */}
+      {/* Mobile Dropdown */}
       {menuOpen && (
-        <div className="md:hidden bg-white shadow-md px-4 py-3 space-y-3 font-medium text-gray-700 transition-all duration-300">
-          <a href="#home" className="block hover:text-green-700" onClick={handleLinkClick}>Home</a>
-          <a href="#about" className="block hover:text-green-700" onClick={handleLinkClick}>About</a>
-          <a href="#products" className="block hover:text-green-700" onClick={handleLinkClick}>Products</a>
-          <a href="#contact" className="block hover:text-green-700" onClick={handleLinkClick}>Contact</a>
+        <div className="md:hidden px-4 pt-3 pb-4 space-y-3 font-medium text-gray-700">
+          <Link to="/" className="block hover:text-green-700" onClick={handleLinkClick}>Home</Link>
+          <Link to="/about" className="block hover:text-green-700" onClick={handleLinkClick}>About</Link>
+          <Link to="/products" className="block hover:text-green-700" onClick={handleLinkClick}>Products</Link>
+          <Link to="/contact" className="block hover:text-green-700" onClick={handleLinkClick}>Contact</Link>
           <input
             type="text"
             placeholder="Search..."
@@ -72,8 +72,8 @@ function App() {
           />
         </div>
       )}
-    </div>
+    </nav>
   );
 }
 
-export default App;
+export default Navbar;

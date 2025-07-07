@@ -1,0 +1,8 @@
+/* Example CSS file */
+nav {
+  transition: all 0.3s ease;
+}
+/* pp.css */
+input::placeholder {
+  color: #9CA3AF; /* Tailwind gray-400 */
+}
