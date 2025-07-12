@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { FaFacebook, FaInstagram, FaPhoneAlt, FaFax } from "react-icons/fa";
-import logo from "../assets/ekosharr.png";
+import logo from "../assets/Ekosharr.jpg";
 
 const Footer = () => {
   return (
@@ -42,16 +42,25 @@ const Footer = () => {
             <div className="w-full md:w-1/2 flex flex-col justify-between text-sm text-white">
               <p>
                 <strong>Eko Sharr</strong><br />
-                Rruga "Deshmoret e Kombit"<br />
-                Brezovicë, Kosovo
+              F. Poroj, Tetovë
               </p>
-              <p className="mt-2 flex items-center gap-2"><FaPhoneAlt /> +383 44 123 456</p>
-              <p className="flex items-center gap-2"><FaFax /> +383 44 654 321</p>
+              <p className="mt-2 flex items-center gap-2"><FaPhoneAlt /> 00389 44 488 1755</p>
+              <p className="flex items-center gap-2"><FaFax /> +389 44 488 885</p>
               <div className="flex space-x-4 mt-3 text-lg">
-                <a href="https://www.facebook.com" target="_blank" rel="noopener noreferrer" className="hover:text-blue-400">
+                <a
+                  href="https://www.facebook.com/EKOSHARRofficialpage"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:text-blue-400"
+                >
                   <FaFacebook />
                 </a>
-                <a href="https://www.instagram.com" target="_blank" rel="noopener noreferrer" className="hover:text-pink-400">
+                <a
+                  href="https://www.instagram.com/ekosharr/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:text-pink-400"
+                >
                   <FaInstagram />
                 </a>
               </div>
@@ -73,7 +82,7 @@ const Footer = () => {
             rel="noopener noreferrer"
             className="text-orange-400 underline"
           >
-            Lifeline Design
+            Neon
           </a>
         </p>
       </div>

@@ -1,90 +1,112 @@
-import React, { useState } from "react";
-import { Link } from "react-router-dom";
-import logo from "../assets/ekosharr.png";
-import "./pp.css";
+import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
+import logo from '../assets/Ekosharr.jpg';
+import './Navbar.css';
 
-function Navbar() {
+const languages = [
+  { code: 'en', label: 'English', flag: '🇬🇧' },
+  { code: 'mk', label: 'Македонски', flag: '🇲🇰' },
+  { code: 'sq', label: 'Shqip', flag: '🇦🇱' },
+];
+
+export default function Navbar() {
+  const [selectedLang, setSelectedLang] = useState('en');
   const [menuOpen, setMenuOpen] = useState(false);
 
-  const handleLinkClick = () => {
-    setMenuOpen(false);
+  const handleLanguageChange = (e) => {
+    setSelectedLang(e.target.value);
   };
 
+  const toggleMenu = () => {
+    setMenuOpen(!menuOpen);
+  };
+
+  const closeMenu = () => setMenuOpen(false);
+
   return (
-    <nav className="bg-white shadow-md px-6 py-4">
-      <div className="flex items-center justify-between max-w-7xl mx-auto">
-        {/* Logo */}
-        <Link to="/" className="flex items-center space-x-2">
-          <img src={logo} alt="Eko Sharr Logo" className="h-10 w-auto" />
-          <span className="text-green-800 font-bold text-xl">Eko Sharr</span>
-        </Link>
-
-        {/* Desktop Links */}
-        <div className="hidden md:flex items-center space-x-8">
-          <ul className="flex space-x-8 font-medium text-gray-700">
-            <li>
-              <Link to="/" className="hover:text-green-700">Home</Link>
-            </li>
-            <li>
-              <Link to="/about" className="hover:text-green-700">About</Link>
-            </li>
-            <li>
-              <Link to="/products" className="hover:text-green-700">Products</Link>
-            </li>
-            <li>
-              <Link to="/contact" className="hover:text-green-700">Contact</Link>
-            </li>
-          </ul>
-
-          {/* Desktop Search */}
-          <div>
-            <input
-              type="text"
-              placeholder="Search..."
-              className="ml-4 border border-gray-300 rounded px-3 py-1 focus:outline-none focus:ring-2 focus:ring-green-500"
-            />
-          </div>
-        </div>
-
-        {/* Mobile Toggle */}
-        <button
-          className="md:hidden text-gray-700 focus:outline-none"
-          onClick={() => setMenuOpen(!menuOpen)}
-          aria-expanded={menuOpen}
-          aria-label="Toggle menu"
-        >
-          <svg
-            className="w-6 h-6"
-            fill="none"
-            stroke="currentColor"
-            viewBox="0 0 24 24"
-          >
-            {menuOpen ? (
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-            ) : (
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
-            )}
-          </svg>
-        </button>
+    <nav style={styles.navbar}>
+      <div style={styles.logoContainer}>
+        <img src={logo} alt="Eko Sharr Logo" style={styles.logoImage} />
+        <span style={styles.logoText}>Eko Sharr</span>
       </div>
 
-      {/* Mobile Menu */}
-      {menuOpen && (
-        <div className="md:hidden mt-2 px-4 pb-4 space-y-4">
-          <Link to="/" onClick={handleLinkClick} className="block font-medium text-gray-700 hover:text-green-700">Home</Link>
-          <Link to="/about" onClick={handleLinkClick} className="block font-medium text-gray-700 hover:text-green-700">About</Link>
-          <Link to="/products" onClick={handleLinkClick} className="block font-medium text-gray-700 hover:text-green-700">Products</Link>
-          <Link to="/contact" onClick={handleLinkClick} className="block font-medium text-gray-700 hover:text-green-700">Contact</Link>
-          <input
-            type="text"
-            placeholder="Search..."
-            className="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-green-500"
-          />
-        </div>
-      )}
+      <ul className={menuOpen ? 'navLinks mobile-active' : 'navLinks'}>
+        <li><Link to="/" className="navLink" onClick={closeMenu}>Home</Link></li>
+        <li><Link to="/about" className="navLink" onClick={closeMenu}>About</Link></li>
+        <li><Link to="/products" className="navLink" onClick={closeMenu}>Products</Link></li>
+        <li><Link to="/contact" className="navLink" onClick={closeMenu}>Contact</Link></li>
+      </ul>
+
+      <select
+        value={selectedLang}
+        onChange={handleLanguageChange}
+        style={styles.languageSelector}
+        aria-label="Select Language"
+      >
+        {languages.map(({ code, flag }) => (
+          <option key={code} value={code}>
+            {flag}
+          </option>
+        ))}
+      </select>
+
+      <button
+        style={styles.menuButton}
+        onClick={toggleMenu}
+        aria-label="Toggle menu"
+      >
+        ☰
+      </button>
     </nav>
   );
 }
- <div className="bg-green-500 text-white text-3xl p-6">Tailwind is working!</div>
 
-export default Navbar;
+const styles = {
+  navbar: {
+    display: 'flex',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    padding: '10px 20px',
+    backgroundColor: '#f5f5f5',
+    borderBottom: '1px solid #ddd',
+    position: 'relative',
+    flexWrap: 'wrap',
+  },
+  logoContainer: {
+    display: 'flex',
+    alignItems: 'center',
+    gap: '10px',
+    flex: '1 1 auto',
+  },
+  logoImage: {
+    height: '40px',
+    width: '40px',
+    objectFit: 'contain',
+  },
+  logoText: {
+    fontSize: '24px',
+    fontWeight: 'bold',
+    color: 'green',
+  },
+  languageSelector: {
+    fontSize: '24px',           // bigger flags
+    padding: '4px 8px',
+    borderRadius: '6px',
+    border: '1.5px solid #4CAF50',
+    backgroundColor: 'white',
+    color: '#333',
+    cursor: 'pointer',
+    width: '60px',              // narrow width for flags only
+    textAlign: 'center',
+    appearance: 'none',         // remove default arrow in many browsers
+    WebkitAppearance: 'none',
+    MozAppearance: 'none',
+  },
+  menuButton: {
+    fontSize: '28px',
+    background: 'none',
+    border: 'none',
+    cursor: 'pointer',
+    display: 'none', // show on mobile via CSS media query
+  },
+};
