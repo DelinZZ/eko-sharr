@@ -18,9 +18,9 @@ const AboutPage = () => {
             Our Story
           </h2>
           <p>
-            Eko Sharr was born from a passion for traditional baking and a belief that authentic food
-            starts with the finest ingredients and time-tested craftsmanship. We set out to bring back
-            the rich, satisfying flavors of gluten-based products made with care and love.
+            Ekosharr is a company that exists since 1999, and in this short period of operation it has achieved an upward trend in growth.
+            In the past period it has been constantly active on the market with a tendency
+            to become a n active export oriented company.
           </p>
           <p>
             Today, our kitchen crafts everything from rustic breads to flaky croissants and fresh pasta,
