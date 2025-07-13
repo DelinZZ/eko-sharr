@@ -15,6 +15,7 @@ export default function Navbar() {
 
   const handleLanguageChange = (e) => {
     setSelectedLang(e.target.value);
+    // Here you would also update the language globally using i18n or context
   };
 
   const toggleMenu = () => {
@@ -32,9 +33,9 @@ export default function Navbar() {
 
       <ul className={menuOpen ? 'navLinks mobile-active' : 'navLinks'}>
         <li><Link to="/" className="navLink" onClick={closeMenu}>Home</Link></li>
-        <li><Link to="/about" className="navLink" onClick={closeMenu}>About</Link></li>
         <li><Link to="/products" className="navLink" onClick={closeMenu}>Products</Link></li>
         <li><Link to="/contact" className="navLink" onClick={closeMenu}>Contact</Link></li>
+        <li><Link to="/about" className="navLink" onClick={closeMenu}>About</Link></li>
       </ul>
 
       <select
@@ -63,13 +64,17 @@ export default function Navbar() {
 
 const styles = {
   navbar: {
+    position: 'fixed',        // Sticky at top
+    top: 0,
+    left: 0,
+    width: '100%',
+    zIndex: 1000,
     display: 'flex',
     justifyContent: 'space-between',
     alignItems: 'center',
     padding: '10px 20px',
     backgroundColor: '#f5f5f5',
     borderBottom: '1px solid #ddd',
-    position: 'relative',
     flexWrap: 'wrap',
   },
   logoContainer: {
@@ -79,26 +84,27 @@ const styles = {
     flex: '1 1 auto',
   },
   logoImage: {
-    height: '40px',
-    width: '40px',
+    height: '36px',
+    width: '36px',
     objectFit: 'contain',
+    borderRadius: '8px', // removes white box look
   },
   logoText: {
-    fontSize: '24px',
+    fontSize: '20px',
     fontWeight: 'bold',
     color: 'green',
   },
   languageSelector: {
-    fontSize: '24px',           // bigger flags
+    fontSize: '24px',
     padding: '4px 8px',
     borderRadius: '6px',
     border: '1.5px solid #4CAF50',
     backgroundColor: 'white',
     color: '#333',
     cursor: 'pointer',
-    width: '60px',              // narrow width for flags only
+    width: '60px',
     textAlign: 'center',
-    appearance: 'none',         // remove default arrow in many browsers
+    appearance: 'none',
     WebkitAppearance: 'none',
     MozAppearance: 'none',
   },
@@ -107,6 +113,6 @@ const styles = {
     background: 'none',
     border: 'none',
     cursor: 'pointer',
-    display: 'none', // show on mobile via CSS media query
+    display: 'none',
   },
 };

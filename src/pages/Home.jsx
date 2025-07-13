@@ -1,9 +1,11 @@
 import React from "react";
+import { motion } from "framer-motion";
 import factoryVideo from "../assets/factoryvideo.mp4";
 import secondPartImage from "../assets/secondpart.jpg";
 import thirdPartImage from "../assets/thirdpart.jpg";
 import BestSeller1 from "../assets/BestSeller1.png";
 import BestSeller2 from "../assets/BestSeller2.png";
+import ekoSharrLogo from "../assets/Ekosharrlogo-removebg-preview.png";  // Your logo image
 
 const Home = () => {
   return (
@@ -19,14 +21,22 @@ const Home = () => {
           playsInline
         />
         <div className="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center">
-          <div className="bg-white bg-opacity-80 p-6 rounded shadow text-center">
-            <h1 className="text-3xl md:text-4xl font-bold text-green-800">
-              Welcome to Eko Sharr
-            </h1>
-            <p className="text-sm md:text-base text-gray-700 mt-2">
+          <motion.div
+            className="flex flex-col items-center"
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7, ease: "easeOut" }}
+          >
+            <img
+              src={ekoSharrLogo}
+              alt="Eko Sharr Logo"
+              className="w-32 md:w-40 mb-3"
+              style={{ filter: "drop-shadow(0 0 6px rgba(34,139,34,0.7))" }}
+            />
+            <p className="text-lg md:text-xl text-white font-semibold drop-shadow-md">
               Taste the tradition of the Sharr mountains
             </p>
-          </div>
+          </motion.div>
         </div>
       </section>
 
@@ -71,7 +81,7 @@ const Home = () => {
               </p>
             </div>
 
-            <div className="mt-48"> {/* More increased spacing here */}
+            <div className="mt-48">
               <h3 className="text-xl font-semibold mb-2 text-green-700">
                 Shar Region Traditions
               </h3>

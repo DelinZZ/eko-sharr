@@ -5,8 +5,8 @@
   margin: 0;
   padding: 0;
   flex: 2 1 auto;
-  justify-content: flex-start; /* Shift links slightly left */
-  margin-left: +180px;
+  justify-content: flex-start;
+  margin-left: 180px;
 }
 
 .navLink {
@@ -16,7 +16,7 @@
   padding: 8px 0;
   display: block;
   transition: color 0.3s ease;
-  margin-left: -15px; /* shift links slightly left */
+  margin-left: -15px;
 }
 
 .navLink:hover {
@@ -40,9 +40,11 @@
     border-bottom: 1px solid #ddd;
     z-index: 1000;
   }
+
   button {
     display: block !important;
   }
+
   select {
     margin-left: auto;
     margin-top: 10px;
